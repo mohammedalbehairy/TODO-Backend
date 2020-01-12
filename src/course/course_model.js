@@ -11,8 +11,7 @@ const CoursesSchema = new Schema({
     },
     details: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     createdById: {
         type: ObjectID,

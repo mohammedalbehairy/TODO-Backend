@@ -44,6 +44,7 @@ async function validateCreateCourse(body) {
 // validate edit course
 async function validateEditCourse(body, courseId) {
 
+    validateObjectId(courseId);
     const validateCourseSchema = Joi.object().keys({
         name: Joi.string().required().min(2).max(25),
         details: Joi.string().required().min(5).max(100)
@@ -127,6 +128,7 @@ async function getAllCourses(userId) {
 // retrieve course by id
 async function getcourseById(courseId, userId) {
 
+    validateObjectId(courseId);
     return await CourseModel.findOne({
         _id: courseId,
         createdById: userId
@@ -137,6 +139,7 @@ async function getcourseById(courseId, userId) {
 // delete course by id
 async function deleteCourseById(courseId, userId) {
 
+    validateObjectId(courseId);
     return await CourseModel.deleteOne({
         _id: courseId,
         createdById: userId
